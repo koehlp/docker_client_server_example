@@ -6,6 +6,16 @@ import numpy as np
 import cv2
 import json
 
+import socket
+
+
+def print_ip_adress():
+    hostname = socket.gethostname()
+    IPAddr = socket.gethostbyname(hostname)
+    print("Your Computer Name is:" + hostname)
+    print("Your Computer IP Address is:" + IPAddr)
+
+
 app = Flask(__name__)
 app.secret_key = "super secret key"
 
@@ -36,4 +46,6 @@ def upload():
 
 
 if __name__ == "__main__":
+    print_ip_adress()
+
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 8888)))
